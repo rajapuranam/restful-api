@@ -14,7 +14,6 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/posts', require('./routes/posts'));
 
-
 // mongoDb connection
 mongoose.connect(keys.mongoDBURL, {
     useNewUrlParser: true,

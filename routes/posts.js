@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 const Post = require('../models/Posts');
 
+// getting posts
 router.get('/', (req, res) => {
     Post.find()
         .then(posts => res.json(posts))
@@ -13,6 +14,7 @@ router.get('/', (req, res) => {
         });
 });
 
+// getting specific post using post title
 router.get('/:title', (req, res) => {
     Post.find({
             'title': req.params.title
@@ -26,6 +28,7 @@ router.get('/:title', (req, res) => {
         });
 });
 
+// adding new post to the data
 router.post('/', (req, res) => {
     const post = new Post({
         title: req.body.title,
@@ -44,6 +47,7 @@ router.post('/', (req, res) => {
         });
 });
 
+// deleting the post basing on post title
 router.delete('/:title', (req, res) => {
     Post.remove({
             'title': req.params.title
@@ -57,7 +61,7 @@ router.delete('/:title', (req, res) => {
         });
 });
 
-// update a post
+// updating a post basing on post title
 router.put('/:title', (req, res) => {
     Post.findOneAndUpdate({
             'title': req.params.title
